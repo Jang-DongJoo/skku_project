@@ -1,0 +1,5 @@
+package project.content.recommend.model;
+
+public class Movie {
+
+}

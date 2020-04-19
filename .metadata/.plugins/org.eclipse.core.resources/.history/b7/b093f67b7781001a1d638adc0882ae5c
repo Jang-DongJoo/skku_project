@@ -1,0 +1,5 @@
+package project.content.recommend.service.impl;
+
+public class MovieSimilarity {
+
+}

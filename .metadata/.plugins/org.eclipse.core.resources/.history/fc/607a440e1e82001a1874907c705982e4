@@ -1,0 +1,43 @@
+package project.content.recommend.service.impl;
+
+import java.util.List;
+
+import project.content.recommend.model.SearchMovieInfo;
+import project.content.recommend.model.SearchMovieInfo.MovieInfoResult.MovieInfo.Genres;
+import project.content.recommend.model.SearchMovieList;
+import project.content.recommend.service.ContentSimilarity;
+
+public class MovieSimilarity implements ContentSimilarity {
+
+	@Override
+	public int calcSimilarity(String code1, String code2) {
+		SearchMovieInfo movie1 = null;
+		SearchMovieInfo movie2 = null;
+
+		int similarity = 0;
+
+		String nation1 = movie1.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+		String nation2 = movie2.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+
+		if (nation1.equals(nation2)) {
+			similarity += 10;
+		}
+
+		List<Genres> genre1 = movie1.getMovieInfoResult().getMovieInfo().getGenres();
+		List<Genres> genre2 = movie2.getMovieInfoResult().getMovieInfo().getGenres();
+
+		for (int i = 0; i < genre1.size(); i++) {
+			for (int j = 0; j < genre2.size(); j++) {
+				String genreNm1 = genre1.get(i).getGenreNm();
+				String genreNm2 = genre2.get(j).getGenreNm();
+				
+				if (genreNm1.equals(genreNm2)) {
+					similarity += 20;
+				}
+			}
+		}
+
+		return similarity;
+	}
+
+}

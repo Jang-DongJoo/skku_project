@@ -1,0 +1,25 @@
+package project.content.recommend.service.impl;
+
+import project.content.recommend.model.SearchMovieInfo;
+import project.content.recommend.service.ContentSimilarity;
+
+public class MovieSimilarity implements ContentSimilarity {
+
+	@Override
+	public int calcSimilarity(String code1, String code2) {
+		SearchMovieInfo movie1 = null;
+		SearchMovieInfo movie2 = null;
+
+		int similarity = 0;
+
+		String nation1 = movie1.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+		String nation2 = movie2.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+
+		if (nation1.equals(nation2)) {
+			similarity += 10;
+		}
+
+		return similarity;
+	}
+
+}

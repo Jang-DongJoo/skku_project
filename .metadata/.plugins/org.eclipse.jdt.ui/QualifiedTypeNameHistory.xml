@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.websocket.server.ServerEndpoint"/>
+<fullyQualifiedTypeName name="retrofit2.http.GET"/>
+<fullyQualifiedTypeName name="retrofit2.Call"/>
+<fullyQualifiedTypeName name="project.content.recommend.model.Movie"/>
+<fullyQualifiedTypeName name="retrofit2.http.Query"/>
+<fullyQualifiedTypeName name="com.google.gson.annotations.SerializedName"/>
+<fullyQualifiedTypeName name="project.content.recommend.service.ContentSimilarity"/>
+<fullyQualifiedTypeName name="project.content.recommend.model.SearchMovieInfo"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,80 @@
+package project.content.recommend.service.impl;
+
+import java.io.IOException;
+import java.util.List;
+
+import project.content.recommend.helper.RetrofitHelper;
+import project.content.recommend.helper.WebHelper;
+import project.content.recommend.model.SearchMovieInfo;
+import project.content.recommend.model.SearchMovieInfo.MovieInfoResult.MovieInfo.Genres;
+import project.content.recommend.model.SearchMovieList;
+import project.content.recommend.model.SearchMovieList.MovieListResult.MovieList;
+import project.content.recommend.service.ApiKobisService;
+import project.content.recommend.service.ContentSimilarity;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+
+public class MovieSimilarity implements ContentSimilarity {
+
+	@Override
+	public int calcSimilarity(String name) {
+		RetrofitHelper retrofitHelper = RetrofitHelper.getInstance();
+		Retrofit retrofit = retrofitHelper.getRetrofit(ApiKobisService.BASE_URL);
+		ApiKobisService apiKobisService = retrofit.create(ApiKobisService.class);
+		Call<SearchMovieList> call = apiKobisService.getSearchMovieList(name);
+
+		SearchMovieList searchMovieList = null;
+		try {
+			searchMovieList = call.execute().body();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		List<MovieList> list = null;
+
+		// 검색 결과가 있다면 list만 추출한다.
+		if (searchMovieList != null) {
+			list = searchMovieList.getMovieListResult().getMovieList();
+		}
+
+		String nation, genre;
+		for (int i = 0; i < list.size(); i++) {
+			nation = list.get(i).getRepNationNm();
+			genre = list.get(i).getRepGenreNm();
+		}
+
+		int curPage = 1;
+		int itemPerPage = 100;
+		Call<SearchMovieList> callList = apiKobisService.getMovieList(curPage, itemPerPage);
+
+		SearchMovieInfo movie1 = null;
+		SearchMovieInfo movie2 = null;
+
+		int similarity = 0;
+
+		String nation1 = movie1.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+		String nation2 = movie2.getMovieInfoResult().getMovieInfo().getNations().getNationNm();
+
+		if (nation1.equals(nation2)) {
+			similarity += 10;
+		}
+
+		List<Genres> genre1 = movie1.getMovieInfoResult().getMovieInfo().getGenres();
+		List<Genres> genre2 = movie2.getMovieInfoResult().getMovieInfo().getGenres();
+
+		for (int i = 0; i < genre1.size(); i++) {
+			for (int j = 0; j < genre2.size(); j++) {
+				String genreNm1 = genre1.get(i).getGenreNm();
+				String genreNm2 = genre2.get(j).getGenreNm();
+
+				if (genreNm1.equals(genreNm2)) {
+					similarity += 20;
+				}
+			}
+		}
+
+		return similarity;
+	}
+
+}
