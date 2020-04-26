@@ -12,8 +12,8 @@ public interface ApiKobisService {
 	Call<SearchMovieList> getSearchMovieList(@Query("movieNm") String movieNm);
 
 	@GET("/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=4617f1d10ee8084d9469cf54fa5017bb")
-	Call<SearchMovieList> getMovieList(@Query("curPage") int curPage);
+	Call<SearchMovieList> getMovieList(@Query("curPage") int curPage, @Query("itemPerPage") int itemPerPage);
 
 	@GET("/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=4617f1d10ee8084d9469cf54fa5017bb")
-	Call<SearchMovieInfo> getSearchMovieInfo(@Query("movieCd") String movieCd);
+	Call<SearchMovieInfo> getSearchMovieInfo(@Query("movieCd") int movieCd);
 }

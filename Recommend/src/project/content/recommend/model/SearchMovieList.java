@@ -20,7 +20,7 @@ public class SearchMovieList {
 		@Data
 		public class MovieList {
 			@SerializedName("movieCd")
-			public String movieCd;
+			public int movieCd;
 			@SerializedName("movieNm")
 			public String movieNm;
 			@SerializedName("repNationNm")

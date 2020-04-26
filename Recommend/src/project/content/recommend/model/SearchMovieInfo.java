@@ -24,7 +24,7 @@ public class SearchMovieInfo {
 			@SerializedName("movieNmEn")
 			public String movieNmEn;
 			@SerializedName("nations")
-			public Nations nations;
+			public List<Nations> nations;
 			@SerializedName("genres")
 			public List<Genres> genres;
 			@SerializedName("directors")

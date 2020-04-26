@@ -1,5 +1,0 @@
-package project.content.recommend.service;
-
-public interface ApiKobisService {
-
-}
