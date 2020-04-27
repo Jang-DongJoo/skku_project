@@ -164,10 +164,6 @@
 			List<Directors> compDirectors = compMovieInfo.getMovieInfoResult().getMovieInfo().getDirectors();
 			List<Actors> compActors = compMovieInfo.getMovieInfoResult().getMovieInfo().getActors();
 
-			//if (compNation.equals(nation1)) {
-			//	similarity += 10;
-			//}
-
 			similarity += 10 * movieSimilarity.compNations(orginNations, compNations);
 			similarity += 10 * movieSimilarity.compGenres(orginGenres, compGenres);
 			similarity += 5 * movieSimilarity.compDirectors(orginDirectors, compDirectors);
