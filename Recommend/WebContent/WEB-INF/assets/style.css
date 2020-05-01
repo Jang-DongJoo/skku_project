@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+}
+
+#container {
+	width: 90%;
+	margin: auto;
+	margin-top: 40px;
+}
+
+form {
+	width: 100%;
+	margin-top: 20px;
+}
+
+form div {
+	width: 100%;
+}
+
+form div label {
+	width: 30%;
+	float: left;
+}
+
+form div input {
+	width: 65%;
+	float: right;
+}
+
+.clearfix:after {
+	content: '';
+	display: block;
+	float: none;
+	clear: both;
+}
+
+form div:last-child {
+	margin-top: 5px;
+	text-align: center;
+}
+
+form button {
+	width: 20%;
+	color: #fff;
+	background-color: #298367;
+	border: 1px solid #298367;
+	border-radius: 2px;
+}
+
+table {
+	width: 100%;
+	margin-top: 30px;
+	border: 1px solid #298367;
+}
+
+thead, tbody, tr, th, td {
+	border: 1px solid #298367;
+	text-align: center;
+}
+
+table thead tr th:first-child {
+	width: 70%;
+}
+
+table tbody tr td:first-child {
+	width: 70%;
+}
